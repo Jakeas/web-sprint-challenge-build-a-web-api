@@ -27,7 +27,7 @@ router.get('/:id', (req,res)=>{
 })
 router.post('/', (req,res)=>{
     const newProject = req.body
-    if(!newProject.name ||!newProject.description || !newProject.completed){
+    if(!newProject.name ||!newProject.description){
         res.status(400).json({message: "Need name and description"})
     } else {
         Projects.insert(newProject)
@@ -44,7 +44,7 @@ router.put('/:id', (req,res)=>{
     const {id} = req.params
   const updatedProj = req.body
     
-    if(!updatedProj.name || !updatedProj.description || !updatedProj.completed){
+    if(!updatedProj.name || !updatedProj.description){
         res.status(400).json({message: "Need name and description"}) 
     } else {
         Projects.update(id, updatedProj)

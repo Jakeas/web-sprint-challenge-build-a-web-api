@@ -28,7 +28,7 @@ router.get('/:id', (req,res)=>{
 
 router.post('/', (req,res)=>{
     const newAction = req.body
-    if(!newAction.notes ||!newAction.description || !newAction.project_id || !newAction.completed){
+    if(!newAction.notes ||!newAction.description || !newAction.project_id){
         res.status(400).json({message: "Need notes,description and project id"})
     } else {
         Actions.insert(newAction)
@@ -45,7 +45,7 @@ router.put('/:id', (req,res)=>{
     const {id} = req.params
     const updatedAction = req.body
     
-    if(!updatedAction.notes || !updatedAction.description || !updatedAction.completed || !updatedAction.project_id){
+    if(!updatedAction.notes || !updatedAction.description ||  !updatedAction.project_id){
         res.status(400).json({message: "Need notes, project id and description"}) 
     } else {
         Actions.update(id, updatedAction)
